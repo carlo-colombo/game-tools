@@ -16,6 +16,11 @@
 				})
 				.text(++count)
 				.css('background-color',this.id).appendTo('#right')
+
+			var button = $(this).css('opacity',0.5)
+			setTimeout(function(){
+				button.css('opacity', null)
+			},250)
 		})
 
 		$('body').poke({
