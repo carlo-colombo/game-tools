@@ -17,6 +17,13 @@
 				.text(++count)
 				.css('background-color',this.id).appendTo('#right')
 		})
+
+		$('body').poke({
+			'N' : function(){
+				$('#right .block').remove()
+				count = 0
+			}
+		})
 	})
 
 	window.scrollTo(0,50);
