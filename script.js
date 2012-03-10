@@ -1,25 +1,25 @@
 (function($) {
 	$.domReady(function() {
+		var buttons = {},
+			count = 0,
+			block = $('<div class="block">');
 
-		['green', 'yellow', 'red'].forEach(function(color) {
-			$('#left').append($('<div>').attr({
-				id: color,
-				'class': 'button',
-			}).css('background-color', color))
+		['red','green','yellow'].forEach(function(color) {
+			buttons[color] = $('<div class="button">').attr({
+				id: color
+			}).appendTo('#left')
 		})
 
-		var count = 0
 		$('#left').on('.button','click',function(){
-			$('<div>')
-				.attr({
-					'class': 'block'
-				})
+			$(block[0].cloneNode(true))
 				.text(++count)
-				.css('background-color',this.id).appendTo('#right')
+				.addClass(this.id)
+				.appendTo('#right')
 
-			var button = $(this).css('opacity',0.5)
+			var button = buttons[this.id].addClass('opacity')
+
 			setTimeout(function(){
-				button.css('opacity', null)
+				button.removeClass('opacity')
 			},250)
 		})
 
