@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#optimization, fix
+#
 script.js
-ender.min.js
+../commons/ender.min.js
 icon_072.png

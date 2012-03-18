@@ -4,7 +4,7 @@
 			count = 0,
 			block = $('<div class="block">');
 
-		['red','green','yellow'].forEach(function(color) {
+		['green','red','yellow'].forEach(function(color) {
 			buttons[color] = $('<div class="button">').attr({
 				id: color
 			}).appendTo('#left')
