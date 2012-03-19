@@ -1,0 +1,55 @@
+<html manifest="arowsk.manifest">
+	<meta name="viewport" content="height=device-height, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="apple-touch-icon-precomposed" href="icon.png" />
+	<script src="../commons/ender.min.js"></script>
+	<script src="script.js"></script>
+	<title>Arowsk</title>
+	<style type="text/css">
+	div{
+		height:65%;
+		color:white;
+		font-size: 200px;
+		text-align: center;
+	}
+	.opacity {opacity: 0.5;}
+	#button{
+		height:30%;
+		background-image: -webkit-gradient(
+			linear,
+			right bottom,
+			left top,
+			color-stop(0.23, rgb(199,189,4)),
+			color-stop(0.66, rgb(138,110,25))
+		);
+		border: solid 12px darkgoldenrod;
+	}
+	body {
+		background-image: -webkit-gradient(
+			linear,
+			right top,
+			left bottom,
+			color-stop(0.23, rgb(199,72,4)),
+			color-stop(0.66, rgb(138,38,55))
+		);
+	}
+	* {
+    	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+	}
+	#corner{
+		position:absolute;
+		top: 0px;
+		right:0px;
+		background-color: black;
+		opacity: 0.7;
+		height: 0;
+		width:0;
+		border: solid 50px;
+		border-bottom: none;
+		border-right:none;
+		border-color: white white black black;
+	}
+	</style>
+	<div id="corner"></div>
+	<div id="counter">0</div>
+	<div id="button"></div>
+</html>
