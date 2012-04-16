@@ -1,14 +1,18 @@
 (function($) {
 	$.domReady(function() {
-		var count = total = prompt("Arrows?"),
+		var count = localStorage.getItem("count") || parseInt(prompt("Arrows?")) || 50,
 			button = $('#button'),
-			counter = $('#counter');
+			counter = $('#counter'),
+			setCount = function(c){
+				localStorage.setItem("count", c)
+				counter.text(c)	
+			}
 
-		counter.text(total)
+		setCount(count)
 
 		button.on('click',function(){
 			if (count>0){
-				counter.text(--count)
+				setCount(--count)
 				button.addClass('opacity')
 				setTimeout(function(){
 					button.removeClass('opacity')
@@ -17,17 +21,9 @@
 		})
 
 		$('#corner').on('click',function(){
-			count = parseInt(prompt("Arrows?"))
-			counter.text(count)
+			count = parseInt(prompt("Arrows?")) || 50
+			setCount(count)
 		})
-
-		$('body').poke({
-			'N' : function(){
-				count = total
-				counter.text(total)		
-			}
-		})
+		window.scrollTo(0,50);
 	})
-
-	window.scrollTo(0,50);
 })(ender)
