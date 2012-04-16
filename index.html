@@ -1,5 +1,13 @@
 <meta name="viewport" content="height=device-height, maximum-scale=1.0, user-scalable=no"/>
 <title>Game tools</title>
+<script type="text/javascript" src="commons/ender.min.js"></script>
+<script type="text/javascript">
+(function($){
+	$.domReady(function() {
+		$("#qr").attr('src',"http://qrcode.kaywa.com/img.php?s=8&d=" + encodeURIComponent(location.href))
+	})
+}(ender))
+</script>
 <style type="text/css">
 	a {text-decoration:none;}
 	body {text-align: center;}
@@ -12,4 +20,4 @@
 	<img src="arowsk/icon.png">
 </a>
 </div>
-<img src="http://qrcode.kaywa.com/img.php?s=8&d=http%3A%2F%2Fcarlo-colombo.github.com%2Fgame-tools%2F" alt="qrcode"  />
+<img id="qr" src="" alt="qrcode"  />
