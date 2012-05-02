@@ -24,6 +24,7 @@
 			count = parseInt(prompt("Arrows?")) || 50
 			setCount(count)
 		})
+
 		window.scrollTo(0,50);
 	})
 })(ender)
