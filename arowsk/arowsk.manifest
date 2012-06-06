@@ -1,5 +1,7 @@
 CACHE MANIFEST
-#localStorage rimosso il curry
+#aggiunti curry.(mp3|ogg), fix js
 script.js
 ../commons/ender.min.js
 icon.png
+curry.mp3
+curry.ogg

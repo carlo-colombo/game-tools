@@ -16,7 +16,7 @@
 				setCount(--count)
 				button.addClass('opacity')
 				setTimeout(function(){
-					//button.removeClass('opacity')
+					button.removeClass('opacity')
 				},250)
 				curry.play()
 			}
