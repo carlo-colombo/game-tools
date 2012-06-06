@@ -22,8 +22,13 @@
 			}
 		})
 
-		$('#corner').on('click',function(){
+		$('#corner-right').on('click',function(){
 			count = parseInt(prompt("Arrows?")) || 50
+			setCount(count)
+		})
+
+		$('#corner-left').on('click',function(){
+			count = count + parseInt(prompt("+ Arrows?")) || 50
 			setCount(count)
 		})
 
