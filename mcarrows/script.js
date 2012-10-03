@@ -1,4 +1,4 @@
-(function($) {
+(function($,bean) {
 
      window.makeCounter = function(counterId,name,value){
         var counter = document
@@ -28,6 +28,7 @@
         return Array.prototype.pop.call(evt.touches).pageX
     }
 
+    console.log("start")
     $.domReady(function() {
         Object.keys(localStorage).forEach(function(k){
             var counter = JSON.parse(localStorage[k])
@@ -51,14 +52,21 @@
             serialize(this)
         }).on('touchstart','.counter',function(e){
             startX = pageX(e)
+            $(this).addClass('touched')
         }).on('touchmove','.counter',function(e){
             length = startX - pageX(e)
         }).on('touchend','.counter',function(e){
             if (Math.abs(length) > 60){
-                $(this).trigger('swipe-' + length>0 ? 'left' : 'right')
+                $(this).trigger(
+                    'swipe-' + (length>0?'left':'right'))
             }
-        }).on('swipe-left','.container',function(){
-            console.log('swipe-left')
+            length=0;
+            $(this).removeClass('touched')
+        }).on('swipe-left','.counter',function(data){
+            if(confirm("Remove counter " + this.getAttribute('data-name') + "?")){
+                var counter = document.body.removeChild(this);
+                localStorage.removeItem(counter.id)
+            }
         });
     })
 })(ender)
