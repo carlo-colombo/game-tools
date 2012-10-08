@@ -43,7 +43,7 @@
         })
 
         var startX, length, timer,
-            $body= $('body');
+            $body = $('body');
 
         $("#add-counter").on('click',function(){
             serialize(makeCounter("counter-"+document.getElementsByClassName('counter').length
