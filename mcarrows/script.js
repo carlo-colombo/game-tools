@@ -1,6 +1,12 @@
 (function($,bean) {
+    var setCounter = function(counterId, value){
+        var counter = document.getElementById(counterId)
+        counter.children[1].textContent=value
+        counter.setAttribute('data-value',value)
+        return counter
+    }
 
-     window.makeCounter = function(counterId,name,value){
+    var makeCounter = function(counterId,name,value){
         var counter = document
             .getElementById('original-counter')
             .cloneNode(true),
@@ -37,7 +43,7 @@
                 ,counter['value'])
         })
 
-        var startX, length
+        var startX, length, timer
 
         $("#add-counter").on('click',function(){
             serialize(makeCounter("counter-"+document.getElementsByClassName('counter').length
@@ -46,27 +52,40 @@
                     prompt("Counter initial value?"))||0))
         })
         $('body').on('click', '.counter',function(){
+            console.log('click');
             var c = (parseInt(this.children[1].textContent) || 1) - 1 ;
             this.children[1].textContent=c 
-            this.setAttribute('value',c)
+            this.setAttribute('data-value',c)
             serialize(this)
         }).on('touchstart','.counter',function(e){
             startX = pageX(e)
             $(this).addClass('touched')
         }).on('touchmove','.counter',function(e){
             length = startX - pageX(e)
+            var time = startTime - Date.now()
         }).on('touchend','.counter',function(e){
+            $(this).removeClass('touched');
             if (Math.abs(length) > 60){
                 $(this).trigger(
                     'swipe-' + (length>0?'left':'right'))
             }
             length=0;
-            $(this).removeClass('touched')
         }).on('swipe-left','.counter',function(data){
-            if(confirm("Remove counter " + this.getAttribute('data-name') + "?")){
-                var counter = document.body.removeChild(this);
+            if(confirm("Remove counter " + counter.getAttribute('data-name') + "?")){
+                var counter = document.body.removeChild(counter);
                 localStorage.removeItem(counter.id)
             }
-        });
+        }).on('dblclick','.counter',function(){
+            serialize(setCounter(this.id
+                ,prompt("New counter value?") ))
+        }).on('touchstart mousedown','.counter',function(){
+            var counter = this
+            timer = setTimeout(function(){
+                serialize(setCounter(counter.id
+                    ,prompt("New counter value?") ))
+            },800);
+        }).on('touchend mouseup',function(){
+            clearTimeout(timer);
+        })
     })
 })(ender)
