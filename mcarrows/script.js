@@ -1,4 +1,4 @@
-(function($,bean) {
+(function($) {
     var setCounter = function(counterId, value){
         var counter = document.getElementById(counterId)
         counter.children[1].textContent=value
