@@ -1,4 +1,4 @@
-(function($) {
+(function($,bean) {
     var setCounter = function(counterId, value){
         var counter = document.getElementById(counterId)
         counter.children[1].textContent=value
@@ -42,10 +42,9 @@
                 ,counter['value'])
         })
 
-        var startX, length, timer,
-            $body = $('body');
-
-        $("#add-counter").on('click',function(){
+        var startX, length, timer
+        
+        bean.on(document.getElementById('add-counter'),'click',function(){
             serialize(makeCounter("counter-"+document.getElementsByClassName('counter').length
                 ,prompt("Counter name?")
                 ,parseInt(
@@ -94,7 +93,7 @@
         }
         
         Object.keys(events).forEach(function(event){
-            $body.on(event,'.counter', events[event])
+            bean.on(document.body, event,'.counter', events[event])
         });
     })
-})(ender)
+})(ender,require('bean'))
