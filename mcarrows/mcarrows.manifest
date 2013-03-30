@@ -1,4 +1,6 @@
 CACHE MANIFEST
-#
+#1234
 script.js
-../commons/ender.min.js
+ender.min.js
+style.css
+icon.png
